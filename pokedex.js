@@ -1,5 +1,5 @@
-const axios = require("axios");
 const cheerio = require("cheerio");
+const fetch = require('node-fetch');
 const url = "https://pokemondb.net/pokedex/game/scarlet-violet";
 
 async function getPokedex() {

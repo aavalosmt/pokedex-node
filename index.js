@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const pokedex = require('./pokedex')
+const port = 80;
 
 app.get('/', (req, res) => {
   res.send('hello world')
@@ -12,6 +13,6 @@ app.get('/pokedex', async (req, res) => {
     res.send(JSON.stringify(pokemons, null, 4));
 })
 
-app.listen(4000, () => {
+app.listen(port, () => {
     console.log("Listening on port 4000")
 })
