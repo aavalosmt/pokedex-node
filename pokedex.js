@@ -1,4 +1,3 @@
-const axios = require("axios");
 const cheerio = require("cheerio");
 
 const url = "https://pokemondb.net/pokedex/game/scarlet-violet";
