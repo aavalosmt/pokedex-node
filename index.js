@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const pokedex = require('./pokedex')
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 4000;
 
 app.get('/', (req, res) => {
   res.send('hello world')
