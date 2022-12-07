@@ -9,7 +9,7 @@ async function getDetail(name) {
 
     var data = {}  
 
-    const attributes = $('#tab-basic-25 > div > div > .vitals-table > tbody > tr')
+    const attributes = $('.sv-tabs-panel > div:nth-child(1) > div:nth-child(2) > .vitals-table > tbody > tr')
     const levelMovements = $('#tab-moves-21 > div > div:nth-child(1) > div:nth-child(3) > .data-table > tbody > tr')
     const eggMovements = $('#tab-moves-21 > div > div:nth-child(1) > div:nth-child(6) > .data-table > tbody > tr')
     const tmMovements = $('#tab-moves-21 > div > div:nth-child(2) > div > .data-table > tbody > tr')
@@ -26,10 +26,10 @@ function parseAttributes($, attributes) {
     var data = {}
 
     attributes.each((i, el) => {
-        const key = $(el).find('th').text();
-        const td = $(el).find('td');
-
+        const key = $(el).find('th').text()
+        const td = $(el).find('td')        
         const values = []
+        
         if(i < (attributes.length - 1)) {
             var iterate = function (parent, result = []) {
                 let children = $(parent).children();
@@ -84,7 +84,6 @@ function parseMovements($, movements) {
         const power = $(numValues.get(1)).text()
         const acc = $(numValues.get(2)).text()
 
-        console.dir($(el).children())
         data.push({
             level: level,
             name: name,
