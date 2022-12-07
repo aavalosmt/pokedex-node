@@ -15,8 +15,12 @@ async function getDetail(name) {
     const tmMovements = $('#tab-moves-21 > div > div:nth-child(2) > div > .data-table > tbody > tr')
     const stats = $('.sv-tabs-panel > div:nth-child(2) > div.grid-col.span-md-12.span-lg-8 > div.resp-scroll > .vitals-table > tbody > tr')
     const descriptions = $('#main > .resp-scroll > .vitals-table > tbody > tr')
+    const image = $('.sv-tabs-panel').find('picture > img').attr('src')
 
-    data["attributes"] = parseAttributes($, attributes)
+    const attrs = parseAttributes($, attributes)
+    attrs["image"] = image
+
+    data["attributes"] = attrs
     data["stats"] = parseStats($, stats)
     data["level-movements"] = parseMovements($, levelMovements)
     data["egg-movements"] = parseMovements($, eggMovements)
@@ -61,15 +65,14 @@ function parseAttributes($, attributes) {
 
         const brs = $(td).html().split("<br>");
         brs.forEach((element, i) => {
-            if(String(element) != '') {
-                const number = String(element).substring(0, 3)
-                var regex = /(?<=\>)(.*?)(?=\<)/
-                const results = regex.exec(String(element))
-                if(results.length > 0) {
-                    const content = number + ' ' + results[1]
-                    values.push(content)
-                }
-            }
+            if(String(element) == '') return
+            const number = String(element).substring(0, 3)  
+            var regex = /(?<=\>)(.*?)(?=\<)/
+            const results = regex.exec(String(element))
+            
+            if(results.length <= 0) return
+            const content = number + ' ' + results[1]
+            values.push(content)        
         })
         data[key] = values
     })
@@ -87,9 +90,8 @@ function parseDescriptions($, descriptions) {
 
         games.children().each((i, el) => {
             const text = $(el).text()
-            if(text != '') {
-                gameData.push(text)
-            }
+            if(text == '') return
+            gameData.push(text)
         })
 
         data.push({
