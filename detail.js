@@ -14,7 +14,7 @@ async function getDetail(name) {
     const eggMovements = $('#tab-moves-21 > div > div:nth-child(1) > div:nth-child(6) > .data-table > tbody > tr')
     const tmMovements = $('#tab-moves-21 > div > div:nth-child(2) > div > .data-table > tbody > tr')
     const stats = $('.sv-tabs-panel > div:nth-child(2) > div.grid-col.span-md-12.span-lg-8 > div.resp-scroll > .vitals-table > tbody > tr')
-    const descriptions = $('#main > div:nth-child(16) > .vitals-table > tbody > tr')
+    const descriptions = $('#main > .resp-scroll > .vitals-table > tbody > tr')
 
     data["attributes"] = parseAttributes($, attributes)
     data["stats"] = parseStats($, stats)
