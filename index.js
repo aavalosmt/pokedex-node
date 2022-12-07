@@ -17,6 +17,7 @@ app.get('/pokedex', async (req, res) => {
 app.get('/pokedex/:pokemon', async (req, res) => {
   let name = req.params.pokemon
   let pkmDetail = await detail.getDetail(name)
+  res.header("Content-Type",'application/json')
   res.send(JSON.stringify(pkmDetail, null, 4))
 });
 
